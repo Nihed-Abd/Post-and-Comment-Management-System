@@ -1,0 +1,78 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <section class="client_section layout_padding">
+        <div class="container">
+            <div class="heading_container heading_center psudo_white_primary mb_45">
+                <h2>
+                    What says our <span>Customers</span>
+                </h2>
+            </div>
+            <div class="container mt-4">
+                <a href="{{ path('app_post_index') }}" class="btn btn-primary">Back </a>
+            </div>
+            <div class="carousel-wrap ">
+                <div class="owl-carousel client_owl-carousel">
+                    {% for comment in comments %}
+                        <div class="item">
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="{{ asset('path_to_your_comment_image_placeholder') }}" alt="" class="box-img">
+                                </div>
+                                <div class="detail-box">
+                                    <div class="client_id">
+                                        <div class="client_info">
+                                            <h6>
+                                                User Name
+                                            </h6>
+                                            <p>
+                                                Email Address
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                    </div>
+
+                                    <p>
+                                        {{ comment.content }}
+                                    </p>
+
+                                    <hr> <!-- Add a horizontal line after each comment -->
+
+                                    <form action="{{ path('admin_comment_delete', {'id': comment.id}) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this comment?');">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="item">
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="{{ asset('path_to_your_default_image') }}" alt="" class="box-img">
+                                </div>
+                                <div class="detail-box">
+                                    <div class="client_id">
+                                        <div class="client_info">
+                                            <h6>
+                                                No Author
+                                            </h6>
+                                            <p>
+                                                No Role
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                    </div>
+                                    <p>
+                                        No content available.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
