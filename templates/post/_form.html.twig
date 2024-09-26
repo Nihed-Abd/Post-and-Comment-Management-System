@@ -1,0 +1,33 @@
+<form method="post">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="form-floating mb-3 mb-md-0">
+                {{ form_label(form.titre) }}
+                {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Enter post title'}}) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                {{ form_label(form.description) }}
+                {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Enter post description'}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="form-floating mb-3">
+        {{ form_label(form.image) }}
+        {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-floating mb-3">
+        {{ form_label(form.date) }}
+        {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-floating mb-3">
+        {{ form_label(form.likes) }}
+        {{ form_widget(form.likes, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="mt-4 mb-0">
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-block">Create Post</button>
+        </div>
+    </div>
+</form>

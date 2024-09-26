@@ -1,0 +1,67 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Edit Post{% endblock %}
+
+{% block body %}
+    <h1>Edit Post</h1>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Edit Post</h3></div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+                        {{ form_errors(form) }}
+
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    {{ form_label(form.titre, 'Title') }}
+                                    {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_errors(form.titre) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    {{ form_label(form.description, 'Description') }}
+                                    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_errors(form.description) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    {{ form_label(form.image, 'Import Image') }}
+                                    {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_errors(form.image) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    {{ form_label(form.date, 'Date') }}
+                                    {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_errors(form.date) }}
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                        <div class="mt-4 mb-0">
+                            <div class="d-grid"><button type="submit" class="btn btn-primary">Edit</button></div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ path('app_post_index') }}" class="btn btn-secondary mt-3">Back to List</a>
+
+{% endblock %}
