@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="team_section layout_padding">
+        <div class="container-fluid">
+            <div class="heading_container heading_center">
+                <h2 class="">Posts</h2>
+            </div>
+
+            <div class="team_container">
+                <div class="row">
+                    {% for post in posts %}
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="{{ asset('uploads/' ~ post.image) }}" class="img1" alt="Post Image">
+                                </div>
+                                <div class="detail-box">
+                                    <h5>{{ post.titre }}</h5>
+                                    <p>{{ post.description }}</p>
+                                    <p>Date: {{ post.date ? post.date|date('Y-m-d') : '' }}</p>
+                                    <p>Likes: {{ post.likes ? post.likes|json_encode : '' }}</p>
+                                </div>
+                                <div class="social_box">
+                                    <a href="{{ path('app_comment_index', {'postId': post.id}) }}">
+                                        <i class="fa fa-comments" aria-hidden="true"></i> Show Comments
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% if posts is empty %}
+                <div class="col-md-12">
+                    <p>No records found.</p>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
